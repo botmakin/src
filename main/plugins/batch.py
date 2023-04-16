@@ -1,6 +1,7 @@
 #Tg:MaheshChauhan/DroneBots
 #Github.com/Vasusen-code
 
+
 """
 Plugin for both public & private channels!
 """
@@ -71,19 +72,10 @@ async def _batch(event):
                 await conv.send_message(r)
                 return
             batch.append(f'{event.sender_id}')
-            cd = await conv.send_message("**Batch process ongoing.**\n\nProcess completed: ", 
-                                    buttons=[[Button.inline("CANCEL❌", data="cancel")]])
-            await run_batch(userbot, Bot, event.sender_id, value, cd, _link) 
             await run_batch(userbot, Bot, event.sender_id, _link, value) 
             conv.cancel()
             batch.pop(0)
             
-@Drone.on(events.callbackquery.CallbackQuery(data="cancel"))
-async def cancel(event):
-    batch_.clear()
-
-async def run_batch(userbot, client, sender, range_, countdown, link):
-    for i in range(range_ + 1):
             
 async def run_batch(userbot, client, sender, link, _range):
     for i in range(_range):
